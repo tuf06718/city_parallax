@@ -1,0 +1,56 @@
+html,
+body {
+    height: 100%;
+}
+
+body {
+    background: linear-gradient(180deg, rgba(4, 88, 93, 1) 0%, rgba(225, 227, 255, 1) 100%);
+    margin: 0px;
+    padding: 0px;
+    border: 0px;
+}
+
+.container {
+    position: fixed;
+    bottom: 0;
+    transform: rotate(-180deg) scaleX(-1);
+    width: 100%;
+}
+
+.building {
+    width: 1vw;
+    display: inline-block;
+    position: fixed;
+    float: left;
+    left: -10%;
+}
+
+#front {
+    z-index: 3;
+}
+
+#middle {
+    z-index: 2;
+}
+
+#back {
+    z-index: 1;
+}
+
+.building_front {
+    background-color: black;
+    border-style: solid;
+    border-color: black;
+}
+
+.building_middle {
+    background-color: grey;
+    border-style: solid;
+    border-color: grey;
+}
+
+.building_back {
+    background-color: lightgray;
+    border-style: solid;
+    border-color: lightgray;
+}
