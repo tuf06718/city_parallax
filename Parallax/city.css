@@ -23,6 +23,10 @@ body {
     position: fixed;
     float: left;
     left: -10%;
+    /* will-change: transform;
+    transform: translate3d(0, 0, 0);
+    backface-visibility: hidden;
+    perspective: 1000; */
 }
 
 #front {

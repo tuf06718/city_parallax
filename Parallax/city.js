@@ -24,13 +24,13 @@ window.onload = function() {
             var speed = 0;
             switch (index) {
                 case 0:
-                    speed = 15;
+                    speed = 50;
                     break;
                 case 1:
-                    speed = 20;
+                    speed = 70;
                     break;
                 case 2:
-                    speed = 30;
+                    speed = 90;
                     break;
             }
 
