@@ -1,7 +1,55 @@
+var data = {
+    clicks : 0
+}
+
+var alignAll = function(){
+    $('.center').css({
+        'left' : $(window).width()/2 - $($('.center')[0]).width()/2+  'px',
+        'width' : $('#godzilla').width() + 'px'
+    });
+
+    $('#linkedIn').css({
+        'left': $(window).width()/3 - $('#linkedIn').width()/2+  'px',
+        'bottom' : '0px'
+    });
+    $('#email').css({
+        'left': $(window).width()/2 - $('#email').width()/2+  'px',
+        'bottom' : '0px'
+    });
+    $('#github').css({
+        'right': $(window).width()/3 - $('#github').width()/2+  'px',
+        'bottom' : '0px'
+    });
+
+    $('#initialText').css({
+        'left' : $(window).width()/2 - $('#initialText').width()/2+  'px'
+    });
+
+    $('#finalText').css({
+        'left' : $(window).width()/2 - $('#finalText').width()/2+  'px'
+    });
+}
+
+var lifeToggle = function (id) {
+    $.each($('.life'), function (index, value) {
+        if ($(this).attr('id') === id) {
+            $(this).show();
+            return true;
+        }
+        $(this).hide();
+    });
+}
+
+window.onresize = function(){
+    alignAll();
+}
+
 window.onload = function() {
     var $html = $('html');
     var $body = $('body');
     var $style = $('<style>');
+
+    
 
     var layers = ['front', 'middle', 'back'];
     $.each(layers, function(index, value) {
@@ -53,5 +101,76 @@ window.onload = function() {
         }
         $html.append($style);
         $body.append($container);
+        alignAll();
+
+        $($('.center')[0]).unbind().click(function () {
+            data.clicks += 1;
+            var self = $(this);
+            self.css({
+                'opacity': '.4'
+            });
+            setTimeout(function () {
+                self.css({
+                    'opacity': '1'
+                });
+            }, 100);
+
+            setTimeout(function () {
+                self.css({
+                    'opacity': '.4'
+                });
+            }, 200);
+            setTimeout(function () {
+                self.css({
+                    'opacity': '1'
+                });
+            }, 300);
+
+            if (data.clicks === 1){
+                lifeToggle('life2');
+            }
+            if (data.clicks === 2){
+                lifeToggle('life3');
+            }
+            if (data.clicks === 3) {
+                lifeToggle('life4');
+
+                $('#initialText').hide();
+                $('#finalText').show();
+                $('.textContainer').css({
+                    'animation-name': '',
+                    'animation-duration': '0s'
+                })
+
+                $(this).css({
+                    'animation-name': 'die',
+                    'animation-iteration-count': 1
+                });
+                $.each($('.container'), function (index, value) {
+                    $(this).css({
+                        'animation-name': '',
+                        'animation-duration': '0s'
+                    });
+                });
+
+                setTimeout(function () {
+                    $('.center')[0].remove();
+
+                    var animateIcons = {
+                        'animation-name': 'throwIcons',
+                        'animation-duration': '.5s',
+                        'animation-delay': '0s',
+                        'animation-iteration-count': '1',
+                        'animation-fill-mode': 'forwards',
+                        'animation-timing-function': 'linear',
+                    };
+
+                    $('#github').css(animateIcons);
+                    $('#email').css(animateIcons);
+                    $('#linkedIn').css(animateIcons);
+
+                }, 2000);
+            }
+        });
     });
 }

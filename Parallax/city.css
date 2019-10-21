@@ -1,10 +1,78 @@
 html,
 body {
     height: 100%;
+    animation: fadein 2s; 
+    font-family: 'gbfont';
+}
+
+@font-face {
+    font-family: 'gbfont';
+    src: url('fonts/gbfont.ttf');
+}
+
+.textContainer{
+    position: absolute;
+    top: 5%;
+    border-style: double;
+    box-shadow: 15px 15px;;
+    border-width: 5px;
+    border-radius: 10px;
+    text-align: center;
+    font-family: 'gbfont';
+    width: 80%;
+    animation-name: flicker;
+    animation-duration: .3s;
+    animation-delay: 0s;
+    animation-iteration-count: infinite;
+    animation-fill-mode: forwards;
+    animation-timing-function: linear;
+}
+
+#initialText{
+    background-color: #f07878;
+}
+
+#finalText{
+    background-color: #bcf3f5;
+}
+
+.center {
+    position: fixed;
+    bottom: 0px;
+    z-index: 3;
+    height: 450px;
+    animation-name: animGodzilla;
+    animation-duration: 2s;
+    animation-delay: 0s;
+    animation-iteration-count: infinite;
+    animation-fill-mode: forwards;
+    animation-timing-function: linear;
+    cursor: pointer;
+}
+
+#linkedIn, #github, #email{
+    bottom: 400px;
+    position: fixed;
+    z-index: 3;
+    cursor: pointer;
+}
+
+.icons > img{
+    height: 100px;
+}
+
+#godzilla{
+    height: 90%;
+}
+
+.life{
+    width: 60%;
+    height: 5%;
+    padding-bottom: 5%;
 }
 
 body {
-    background: linear-gradient(180deg, rgba(4, 88, 93, 1) 0%, rgba(225, 227, 255, 1) 100%);
+    background: linear-gradient(180deg, rgba(136,129,249,1) 0%, rgba(0,212,255,1) 100%);
     margin: 0px;
     padding: 0px;
     border: 0px;
@@ -15,6 +83,13 @@ body {
     bottom: 0;
     transform: rotate(-180deg) scaleX(-1);
     width: 100%;
+    animation-name: shake;
+    animation-duration:2s;
+    animation-delay: 0s;
+    animation-iteration-count: infinite;
+    animation-fill-mode: forwards;
+    animation-timing-function: linear;
+    /* overflow: hidden; */
 }
 
 .building {
@@ -23,14 +98,10 @@ body {
     position: fixed;
     float: left;
     left: -10%;
-    /* will-change: transform;
-    transform: translate3d(0, 0, 0);
-    backface-visibility: hidden;
-    perspective: 1000; */
 }
 
 #front {
-    z-index: 3;
+    z-index: 4;
 }
 
 #middle {
@@ -57,4 +128,47 @@ body {
     background-color: lightgray;
     border-style: solid;
     border-color: lightgray;
+}
+
+@keyframes animGodzilla{
+    0% {
+        bottom: 0px;
+    }
+    95% {
+        bottom: 100px;
+    }
+    100% {
+        bottom: 0px;
+    }
+}
+
+@keyframes shake {
+    0% { bottom: 0px}
+    97.4% { bottom: 0px}
+    97.% { bottom: 0px}
+    100% { bottom: -5px}
+  }
+
+@keyframes die {
+    0% {bottom: 0px}
+    100% { bottom: -300px}
+}
+
+@keyframes fadein {
+    from { opacity: 0; background-color: black; }
+    to   { opacity: 1; }
+}
+
+@keyframes throwIcons {
+    0% {bottom: 0px; }
+    70% { bottom: 60%; }
+    85% { bottom: 45%; }
+    95% { bottom: 52%; }
+    100% { bottom: 50%; }
+}
+
+@keyframes flicker {
+    0% { opacity: .9; }
+    50% { opacity: 1; }
+    100% { opacity: .8; }
 }
